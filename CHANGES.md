@@ -23,6 +23,16 @@ next
 - Add support for locks in actions, for tests that can't be run
   concurrently (#263)
 
+- Change the semantic of aliases: there are no longer aliases that are
+  recursive such as `install` or `runtest`. All aliases are
+  non-recursive. However, when requesting an alias from the command
+  line, this request the construction of the alias in the specified
+  directory and all its children recursively. This allows users to get
+  the same behavior as previous recursive aliases for their own
+  aliases, such as `example`. Inside jbuild files, one can use `(deps
+  (... (alias_rec xxx) ...))` to get the same behavior as on the
+  command line.
+
 1.0+beta13 (05/09/2017)
 -----------------------
 
